@@ -1,0 +1,5 @@
+,fetus_adult,age_group,age,sex,gender
+SRR1554555,adult,1,66.72,female,0
+SRR1554554,fetus,0,0.3,female,0
+SRR1554556,adult,1,36.98,male,1
+SRR1554566,fetus,0,-0.5,male,1
