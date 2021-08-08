@@ -1,0 +1,11 @@
+Run;Sample;age;age.group;sex;race;rin;fraction
+SRR1554534;R2857;40,42;adult;male;AA;8,4;total
+SRR1554535;R2869;41,58;adult;male;AA;8,7;total
+SRR1554568;R4708;-0,4986;fetus;male;AA;8;total
+SRR1554561;R4166;43,88;adult;male;AA;8,7;total
+SRR1554567;R4707;-0,4027;fetus;male;AA;8,6;total
+SRR1554536;R3098;44,17;adult;female;AA;5,3;total
+SRR1554541;R3485;-0,3836;fetus;male;AA;5,7;total
+SRR1554539;R3467;36,5;adult;female;AA;9;total
+SRR1554538;R3462;-0,4027;fetus;female;AA;6,4;total
+SRR1554537;R3452;-0,3836;fetus;female;AA;9,6;total
