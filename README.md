@@ -17,3 +17,8 @@ In my personal genomic data science project, the differential gene expression be
 - Get tidy data (count table)
 3. Do exploratory analysis and statistical analysis in R
 4. Predict and classify characteristics of samples in Python 
+
+### Reference:
+This personal project refered to:
+- Genomic Data Science Specialization courses (https://www.coursera.org/specializations/genomic-data-science)
+- https://github.com/friveramariani/GenomicDataScience_FetalAdultBrain.git
