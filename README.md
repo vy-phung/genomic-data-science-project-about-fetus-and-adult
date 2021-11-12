@@ -20,7 +20,7 @@ In my personal genomic data science project, the differential gene expression be
 
 ### Reference:
 This personal project refered to:
-- Genomic Data Science Specialization courses
+- Genomic Data Science Specialization audit courses
 (https://www.coursera.org/specializations/genomic-data-science)
 - https://github.com/friveramariani/GenomicDataScience_FetalAdultBrain.git
 - https://github.com/jtleek/datasharing.git
