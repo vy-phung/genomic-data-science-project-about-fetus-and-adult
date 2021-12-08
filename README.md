@@ -24,7 +24,6 @@ In my personal genomic data science project, the differential gene expression be
 - I only use 10 samples, which means the sample size is too small to infer for the large population and can be biased
 
 ### Reference:
-This personal project refered to:
 - Genomic Data Science Specialization audit courses
 (https://www.coursera.org/specializations/genomic-data-science)
 - https://github.com/friveramariani/GenomicDataScience_FetalAdultBrain.git
