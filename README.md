@@ -2,7 +2,7 @@
 ### Summary
 I do this project in order to practice and understand deeply how to do genomic data science. 
 
-In my personal genomic data science project, the differential gene expression between fetal and adult brains was evaluated in transcriptome sequencing data (known as RNA-seq) and then find out how many up-regulated and down-regulated genes in statistical analysis in R. 
+In my personal genomic data science project, the differential gene expression between fetal and adult brains was evaluated in transcriptome sequencing data (known as RNA-seq) and then find out how many up-regulated and down-regulated genes in statistical analysis by R. 
 
 Moreover, I will use the genomics data including not statistically analyzed data, and already statistically analyzed data in order to predict and classify some characteristics of samples (gender, age) by using Python. 
 ### Sites to access  
