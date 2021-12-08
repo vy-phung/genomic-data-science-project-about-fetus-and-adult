@@ -2,14 +2,13 @@
 title: Developmental regulation of human cortex transcription project
 author: Vy K Phung
 output:
-  rmarkdown::html_document:
+  rmarkdown::pdf_document:
     toc: true
   vignette: >  
     %\VignetteIndexEntry{Developmental regulation of human cortex transcription project}
     %\VignetteEngine{knitr::rmarkdown}
     \usepackage[utf8]{inputenc}
 ---
-
 
 ## Load library 
 ```{r, results="hide", warning=FALSE, message=FALSE}
@@ -322,7 +321,7 @@ As we can see, there are 2540 common up-regulated genes
 and 3026 common down-regulated genes between limma package and DESeq package.
 
 
-In addition to analyzing the correlation in R, I also want to predict and classify some characteristics of those 10 samples such as gender, or age by using Python to analyze their genes from count table. Below is the preparation for that process. 
+In addition to analyzing the correlation in R, I also want to predict and classify some characteristics of those 10 samples such as gender, or age by using Python. Below is the preparation for that process. 
 
 ## Preparing data for prediction and classification
 
@@ -338,43 +337,14 @@ head(up_down)
 ```
 
 ```{r}
+# df is saved in a name "data for regulated gene.csv"
 df <- merge(up_down_reg,up_down, by =0)
 row.names(df) <- df$Row.names
 df = df[,-1]
 head(df)
 ```
+ 
 
-I will also examine the Python's results of those above 10 samples in wider context by using new 4 samples for the purpose of testing. Below is the preparation of 4 samples in R, which then is processed in Python. 
 
-### Preparing count_symbol for test sample
-
-```{r,warning=FALSE,message=FALSE}
-library(readxl)
-```
-```{r,warning=FALSE,message=FALSE}
-test_ann_count <- read_excel("D:/word/bioinformatics/personal project/PRJNA245228/tidy data/test_ann_count.xlsx")
-dup_test <- duplicated(test_ann_count$SYMBOL)
-table(dup_test)
-test_count = test_ann_count[!dup_test,c(-1,-2,-4)]
-na_test <- is.na(test_count$SYMBOL)
-test_count = test_count[!na_test,]
-test_count = as.data.frame(test_count)
-rownames(test_count) <- test_count[,1]
-test_count <- test_count[,-1]
-head(test_count)
-```
-
-```{r}
-test_sample <- read.csv("D:/word/bioinformatics/personal project/PRJNA245228/sample_data/test_sample.csv")
-head(test_sample)
-```
-
-```{r,warning=FALSE,message=FALSE}
-test <- DESeqDataSetFromMatrix(countData = test_count, colData = test_sample, design = ~ age_group)
-test_tr <- rlog(test, blind = FALSE)
-plotPCA(test_tr, intgroup = c("age_group"))
-test_tr = assay(test_tr)
-head(test_tr)
-```
 
 
