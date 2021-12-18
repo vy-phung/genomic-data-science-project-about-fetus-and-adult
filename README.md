@@ -1,4 +1,4 @@
-## RNA-sequence re-analysis for developmental regulation of human cortex transcription between fetus and adult.
+## RNA-sequence re-analysis for developmental regulation of human cortex transcription between fetus and adult
 ### Summary
 I do this project in order to practice and understand deeply how to do genomic data science. 
 
