@@ -3,11 +3,11 @@
 I do this project in order to practice and understand deeply how to do genomic data science. 
 
 The purpose of this re-analysis is to examine the correlation of differential gene expression between fetal and adult brains, which is evaluated through RNA-sequencing.
-Then find out how many up-regulated and down-regulated genes in statistical analysis by R. 
+If it has correlation, then count how many up-regulated and down-regulated genes. All of this using R, RStudio. 
 
-Moreover, I will use the genomic data including not statistically analyzed data, and already statistically analyzed data in order to predict and classify some characteristics of samples (gender, age) by using Python. 
-### Sites to access  
-1. The article that I used its data: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4281298/
+Moreover, I will use the genomic data including not statistically analyzed data, and already statistically analyzed data in order to predict and classify some characteristics of samples (gender, age). All of this using Python, Google Colab. 
+### Links to access  
+1. The article "developmental regulation of human cortex transcription between fetus and adult": http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4281298/
 
 2. The article's RNA-seq data: http://www.ebi.ac.uk/ena/data/view/PRJNA245228
 
@@ -24,7 +24,7 @@ Moreover, I will use the genomic data including not statistically analyzed data,
 4. Predict and classify characteristics of samples in Python 
 
 ### Drawbacks:
-- I only use 10 samples, which means the sample size is too small to infer for the large population and can be biased
+- Using 10 samples, which means the sample size is too small to infer for the large population and can be biased
 
 ### Reference:
 - Genomic Data Science Specialization audit courses
