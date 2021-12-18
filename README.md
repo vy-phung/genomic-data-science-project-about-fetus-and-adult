@@ -23,7 +23,7 @@ Moreover, I will use the genomic data including not statistically analyzed data,
 3. Do exploratory analysis and statistical analysis in R
 4. Predict and classify characteristics of samples in Python 
 
-### Drawbacks:
+### Drawback:
 - Use 10 samples, which means the sample size is too small to infer for the large population and can be biased
 
 ### Reference:
