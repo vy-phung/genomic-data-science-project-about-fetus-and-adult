@@ -15,7 +15,7 @@ Moreover, I will use the genomic data including not statistically analyzed data,
 
 ### Brief overview
 1. Download RNA-seq data vs phenotype metadata (checking code book.docx for more details)
-2. Using The Galaxy Project to do (checking code book.docx for more details):
+2. Use The Galaxy Project to do (checking code book.docx for more details):
 - FASTQ Quality Control
 - Alignment with HISAT2
 - Get feature count from "featureCounts" in RNA-seq
@@ -24,7 +24,7 @@ Moreover, I will use the genomic data including not statistically analyzed data,
 4. Predict and classify characteristics of samples in Python 
 
 ### Drawbacks:
-- Using 10 samples, which means the sample size is too small to infer for the large population and can be biased
+- Use 10 samples, which means the sample size is too small to infer for the large population and can be biased
 
 ### Reference:
 - Genomic Data Science Specialization audit courses
