@@ -2,7 +2,7 @@
 title: Examine the association between gene expression and age_group variable (fetus vs adult)
 author: Vy K Phung
 output:
-  rmarkdown::html_document:
+  rmarkdown::pdf_document:
     toc: true
   vignette: >  
     %\VignetteIndexEntry{Developmental regulation of human cortex transcription project}
@@ -12,8 +12,7 @@ output:
 
 ## Introduction
 
-The purpose of this re-analysis is to examine the correlation of differential gene expression between fetal and adult brains, which is evaluated through RNA-sequencing. If it has correlation, then count how many up-regulated and down-regulated genes. 
-I will do exploratory analysis and statistical analysis by using R, RStudio. 
+The purpose of this re-analysis is to examine the correlation of differential gene expression between fetal and adult brains, which is evaluated through RNA-sequencing. If it has correlation, then count how many up-regulated and down-regulated genes. I will do exploratory analysis and statistical analysis by using R, RStudio. 
 
 ## Load library 
 ```{r, results="hide", warning=FALSE, message=FALSE}
@@ -37,7 +36,7 @@ head(count)
 head(pheno)
 ```
 
-It is clear that there are some duplications of gene symbol and Entrezid, for example, in line 5,6 of count table. Therefore I will remove duplicated genes and use gene symbol as row name.
+It is clear that there are some duplications in columns "SYMBOL"(gene symbol) and "ENTREZID", for example, in line 5,6 of "count" table. I will remove duplicated genes and use gene symbol as row name.
 ```{r}
 dup <- duplicated(count$SYMBOL)
 table(dup)
@@ -50,9 +49,9 @@ head(count_symbol)
 ```
 ## Data exploration
 
-Although the target of this exploratory analysis is figuring out if there is a correlation between differential gene expression in fetus vs adult, I still plot PCA for the sex group in this data exploration to see if there is an association between sex variable (female vs male) with gene expression in fetus vs adult. 
+Although the target of this exploratory analysis is figuring out if there is a correlation between differential gene expression in fetus vs adult brains, I still plot PCA for the sex group in this data exploration to have a brief overview if there might be an association between sex variable (female vs male) with gene expression in fetus vs adult. 
 
-At first, I will explore unfiltered data which still has some genes' row names having 0 reads in count_symbol table by using DESeq2. 
+At first, I will explore unfiltered data which still has some genes' row names having 0 reads in "count_symbol" table by using DESeq2. 
 
 ### Unfiltered data
 ```{r,warning=FALSE,message=FALSE}
@@ -65,7 +64,7 @@ plotPCA(edata_tr, intgroup = c("age_group"))
 plotPCA(edata_tr, intgroup = c("sex"))
 ```
 
-According to plotPCA having intgroup is "age_group", it is clear that there can be an association between differential gene expression and age_group(fetus vs adult). However, in plotPCA having intgroup is "sex", we can see that there could be no association between gender and gene expression. 
+According to plotPCA having intgroup "age_group", there can be an association between differential gene expression and age_group(fetus vs adult). However, in plotPCA having intgroup "sex", we can see that there might be no association between gender and gene expression. 
 
 I will also show the table of data transform of the above count_symbol table and the cluster of it in Dendogram so that we could easily visualize the correlation between those samples. 
 ```{r}
@@ -76,16 +75,16 @@ gene_fit <- hclust(dist_samples, method="ward.D")
 plot(gene_fit, hang=-1)
 ```
 
-According to cluster, we can also see that there are 2 main branchs. All the small branches SRR15545(41,68,37,67,38) on the main left branch are in the fetus group, while the others on the right main branch are in the adult group. This result reinforces the hypothesis that there can be a correlation between differential gene expression in fetus vs adult.  
+According to cluster Dendogram, there are 2 main branches. The smaller branches SRR15545(41,67,38,68,37) on the main left are fetus group, while the others on the main right are in adult group. This visualization reinforces the hypothesis that there can be a correlation between differential gene expression in fetus vs adult.  
 
-Additionally, I also visualize the frequency of number of reads in the count table when data has been transformed in histogram and boxplot. We can see that mostly the reads are below 20 and in the range between 5 to 15. 
+Additionally, I also visualize the frequency of number of reads in the count table when data has been transformed on histogram and boxplot. We can see that mostly the reads are below 20 and in the range between 5 to 15. 
 ```{r}
 hist(edata_tr,breaks=100,col=2,xlim=c(0,20),ylim=c(0,6000))
 boxplot(edata_tr,col=2,range=0)
 ```
 
 ### Filtered data
-Removing lowly expressed genes and using DESeq to explore data as the same way as aforementioned unfiltered data in order to see if there are any differences between filtered and unfiltered data. 
+Removing lowly expressed genes and using DESeq to explore data as the same way as above unfiltered data in order to see if there are any differences between filtered and unfiltered one. 
 ```{r,warning=FALSE,message=FALSE}
 count_filter = count_symbol[rowMeans(count_symbol) > 100,] 
 edata <- DESeqDataSetFromMatrix(countData = count_filter, colData = pheno, design = ~ age_group)
@@ -102,7 +101,7 @@ gene_fit <- hclust(dist_samples, method="ward.D")
 plot(gene_fit, hang=-1)
 ```
 
-Wee can see that there is almost no difference in the results of unfiltered and filtered data except in cluster dendogram of filetered data, the relation between SRR1554568 and SRR1554537 are not close-related as same as that of unfiltered data.    
+We can see that there is almost no difference in the results of unfiltered and filtered data except on the cluster Dendogram of filtered one, the relation between SRR1554568 and SRR1554537 are not close-related as same as that of unfiltered.    
 ```{r}
 hist(edata_tr,breaks=100,col=2,xlim=c(0,20),ylim=c(0,6000))
 boxplot(edata_tr,col=2,range=0)
@@ -149,17 +148,17 @@ edata_ma_tr <- rlog(edata_ma, blind = FALSE)
 plotPCA(edata_ma_tr, intgroup = c("age_group"))
 ```
 
-We can see that in female and male, there is a difference between fetus and adult, which is as same as the above result of age_group variable in unfiltered and filtering data section without adjustment factor, sex variable. Thus, the sex variable might not effect much to the result of age_group.
+For both female and male, the visualization of plotPCA shows that there still can be an association between gene expression with age_group variable(fetus vs adult).
 
 ## Statistical analysis
-The target of this statistical analysis is examining the correlation between age_group variable (fetus or adult) and gene expression so that in the end we can see the difference between up-regulated genes and down-regulated genes in fetus vs adult.
+The target of this statistical analysis is examining the correlation between age_group variable (fetus or adult) and gene expression more clearly so that in the end I will count up and down regulated genes.
 
-In this statistical analysis, I will use limma package and DESeq package to see if there are any the different results between two methods. 
+In this statistical analysis, I will use limma package and DESeq package to see if there are any different results between two methods. 
 
 I will use DEseq package to analyze edata (output of DESeq) and Limma package to analyze edata_tr (edata has been transformed) 
 
 ### Unadjusted data
-At first, I will analyse statistically variable age_group without adjustment factor (sex variable). 
+At first, I will analyze statistically variable age_group without adjustment factor (sex variable). 
 
 #### Fit regression with limma package
 
@@ -183,7 +182,7 @@ adj_pval_limma_age = topTable(ebayes_limma_age,number=dim(edata_tr)[1])$adj.P.Va
 hist(adj_pval_limma_age)
 ```
 
-According to histogram of adjusted p-value, it suggests that there might be an association between age_group variable and gene expression, which means there is a difference between fetus and adult. 
+According to the histogram of adjusted p-value, it suggests that there might be an association between age_group variable and gene expression, which means there is a differential gene expression between fetal and adult brains in these samples. 
 
 A number of genes have adjusted p-value less than 0.05
 ```{r}
@@ -210,7 +209,7 @@ hist(res$pvalue)
 hist(res$padj)
 ```
 
-We can see that there is also an association between age_group and gene expression that is as same as limma package. 
+We can see that there is also an association between gene expression with age_group as same as the above result of limma package. 
 
 A number of genes have adjusted p-value less than 0.05
 ```{r}
@@ -218,7 +217,7 @@ table(res$padj <0.05)
 ```
 
 ### Adjusted data
-Because I suspect that sex variable can adjust the association between age_group factor with gene expression, we will analyse statistically data with adjustment factor. 
+Because I suspect that sex variable can adjust the association between gene expression with age_group factor, I will analyze statistically data with adjustment factor. 
 
 #### Fit regression with limma package with adjustment factor
 ```{r}
@@ -267,15 +266,16 @@ hist(results_adj$pvalue)
 hist(results_adj$padj)
 ```
 
-In the adjustment section, we can see that in limma package, the results which adjusted p-value is less than 0.05 are 8232 accounting for about 52.9% in the total of 15559 genes. However, in DESeq package, the results less than 0.05 are little, and according to the the histogram of results_adj pvalue in DESeq, it is likely that there is no association between adjusted data and gene expression.
+In the adjustment section, we can see that in the limma package, the results having adjusted p-value less than 0.05 are 8232, which also account for about 52.9% in the total of 15559 genes. However, in DESeq package, the results less than 0.05 are a few, and according to the the histogram of results_adj pvalue from DESeq package, it is likely that there is no association between gene expression with adjusted data(including age_group variable and sex variable).
 
-### Get up and down regulated genes 
+## Count up and down regulated genes 
 Because of clear evidence of correlation when analyzing unadjusted data, which only have age_group variable, we can see that there is a correlation between the age_group factor and gene expression. Therefore, I will count the up-regulated genes, which are highly expressed and up-regulation in human especially for fetus, and down-regulated genes, which are down-regulation in human especially when getting older and as a result highly appear in the adult than the fetus
 
 I will get up-regulated and down-regulated genes from unadjusted data of both limma package and DESeq package.  
 
-#### Limma package
-The number of up-regulated genes 
+### Limma package
+
+**The number of up-regulated genes** 
 ```{r}
 sum(re$adj.P.Val <0.05 & re$logFC > 1)
 ```
@@ -284,7 +284,7 @@ up_limma <- re %>% filter (logFC > 1 & adj.P.Val < 0.05) %>% arrange(adj.P.Val)
 head(up_limma)
 ```
 
-The number of down-regulated genes
+**The number of down-regulated genes**
 ```{r}
 sum(re$adj.P.Val <0.05 & re$logFC < -1)
 ```
@@ -293,9 +293,10 @@ down_limma <- re %>% filter (logFC < -1 & adj.P.Val < 0.05) %>% arrange(adj.P.Va
 head(down_limma)
 ```
 
-#### DESeq package
+### DESeq package
 
-The number of up-regulated genes
+
+**The number of up-regulated genes**
 ```{r}
 sum(res$padj < 0.05 & res$log2FoldChange > 1, na.rm=TRUE)
 ```
@@ -305,7 +306,7 @@ head(up_de)
 ```
 
 
-The number of down-regulated genes
+**The number of down-regulated genes**
 ```{r}
 sum(res$padj < 0.05 & res$log2FoldChange < -1, na.rm=TRUE)
 ```
@@ -314,6 +315,7 @@ down_de <- res %>% filter (log2FoldChange < -1 & padj < 0.05) %>% arrange(padj)
 head(down_de)
 ```
 
+**The number of common up-regulated and also down-regulated genes from both DESeq package and Limma package**
 ```{r}
 up <- rownames(up_de) %in% rownames(up_limma)
 table(up)
