@@ -352,6 +352,8 @@ df <- merge(up_down_reg,up_down, by =0)
 row.names(df) <- df$Row.names
 df = df[,-1]
 head(df)
+# save file
+# write.csv(df, file = "D:/word/bioinformatics/personal project/genomic-data-science-project-about-fetus-and-adult/tidy data/data for regulated gene.csv")
 ```
  
 
