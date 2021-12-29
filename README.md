@@ -1,19 +1,19 @@
 ## RNA-sequence re-analysis for the correlation of differential gene expression between fetal and adult brains
-### Summary
+### Summary:
 I do this project in order to practice and understand deeply how to do genomic data science. 
 
 The purpose of this re-analysis is to examine the correlation of differential gene expression between fetal and adult brains, which is evaluated through RNA-sequencing.
 If it has correlation, then count how many up-regulated and down-regulated genes. All of them are done in R, RStudio. 
 
 Moreover, I will use the genomic datasets including not statistically analyzed data, and already statistically analyzed data in order to predict and classify some characteristics of samples (gender, age). All of them are done in Python, Google Colab. 
-### Links to access  
+### Links to access:  
 1. The article "developmental regulation of human cortex transcription between fetus and adult": http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4281298/
 
 2. The article's RNA-seq data: http://www.ebi.ac.uk/ena/data/view/PRJNA245228
 
 3. The article's phenotype meta-data for the samples: http://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA245228
 
-### Brief overview
+### Brief overview:
 1. Download RNA-seq data vs phenotype metadata (checking code book.docx for more details)
 2. Use The Galaxy Project to do (checking code book.docx for more details):
 - FASTQ Quality Control
