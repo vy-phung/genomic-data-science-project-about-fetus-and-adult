@@ -1,6 +1,6 @@
 ## RNA-sequence re-analysis for the correlation of differential gene expression between fetal and adult brains
 ### Summary:
-I do this project in order to practice and understand deeply how to do genomic data science. You can see its webpage <a href="https://www.coursera.org/specializations/genomic-data-science">here</a>
+I do this project in order to practice and understand deeply how to do genomic data science. You can see its webpage <a href="https://vy-phung.github.io/vyphung/summary.html">here</a>
 
 The purpose of this re-analysis is to examine the correlation of differential gene expression between fetal and adult brains, which is evaluated through RNA-sequencing.
 If it has correlation, then count how many up-regulated and down-regulated genes. All of them are done in R, RStudio. 
