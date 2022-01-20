@@ -2,12 +2,12 @@
 ### Summary:
 I do this project in order to practice and understand deeply how to do genomic data science. <br> You can see its webpage <a href="https://vy-phung.github.io/vyphung/summary.html">here</a>
 
-The purpose of this re-analysis is to examine the correlation of differential gene expression between fetal and adult brains, which is evaluated through RNA-sequencing.
+I get the data at the link below to re-analyze. The purpose of this re-analysis is to examine the correlation of differential gene expression between fetal and adult brains, which is evaluated through RNA-sequencing.
 If it has correlation, then count how many up-regulated and down-regulated genes. All of them are done in R, RStudio. 
 
 Moreover, I will use the genomic dataset (already statistically analyzed data) in order to predict and classify some characteristics of samples (gender, age). All of them are done in Python, Google Colab. 
-### Links to access:  
-1. The article "developmental regulation of human cortex transcription between fetus and adult":<br> http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4281298/
+### Links to access the data source:  
+1. The article "Developmental regulation of human cortex transcription and its clinical relevance at base resolution":<br> http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4281298/
 
 2. The article's RNA-seq data: <br> http://www.ebi.ac.uk/ena/data/view/PRJNA245228
 
